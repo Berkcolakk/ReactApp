@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { USER_LOGIN, USER_LOGOUT, LOGIN_PAGE_UNLOADED, UPDATE_FIELD_AUTH, USER_REGISTER } from '../../constants/ActionTypes';
+import { LOGIN, LOGOUT, LOGIN_PAGE_UNLOADED, UPDATE_FIELD_AUTH, REGISTER } from '../../constants/ActionTypes';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import requestConfiguration from '../../RequestConfiguration';

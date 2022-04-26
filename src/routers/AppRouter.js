@@ -9,11 +9,11 @@ class AppRouter extends Component {
     render() {
         return (
             <Router>
-                <Navbar />
+                <Navbar currentUser={this.props.currentUser} />
                 <Routes>
-                    <Route exact path='/' element={<Home />}></Route>
-                    <Route exact path='/login' element={<Login />}></Route>
-                    <Route path="*" element={<NotFound />}></Route>
+                    <Route exact path='/' currentUser={this.props.currentUser} element={<Home />}></Route>
+                    <Route exact path='/login' currentUser={this.props.currentUser} element={<Login />}></Route>
+                    <Route path="*" currentUser={this.props.currentUser} element={<NotFound />}></Route>
                 </Routes>
             </Router>
         )

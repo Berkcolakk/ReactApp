@@ -8,6 +8,7 @@ import RequestConfiguration from './RequestConfiguration';
 import AppRouter from './routers/AppRouter';
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     appLoaded: state.login.appLoaded,
     appName: state.login.appName,
@@ -41,7 +42,8 @@ class App extends Component {
   }
   render() {
     return (
-        <AppRouter />
+        <AppRouter appName={this.props.appName}
+        currentUser={this.props.currentUser} />
     );
   }
 }

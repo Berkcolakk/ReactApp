@@ -1,11 +1,12 @@
-/* HOME */
 export const APP_LOAD = 'APP_LOAD';
 export const REDIRECT = 'REDIRECT';
-/* HOME */
-/* LOGIN */
-export const USER_REGISTER = 'USER_REGISTER';
-export const USER_LOGIN = 'USER_LOGIN';
-export const UPDATE_FIELD_AUTH = 'UPDATE_FIELD_AUTH';
-export const USER_LOGOUT = 'USER_LOGOUT';
+export const HOME_PAGE_LOADED = 'HOME_PAGE_LOADED';
+export const HOME_PAGE_UNLOADED = 'HOME_PAGE_UNLOADED';
+export const SET_PAGE = 'SET_PAGE';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const REGISTER = 'REGISTER';
 export const LOGIN_PAGE_UNLOADED = 'LOGIN_PAGE_UNLOADED';
-/* LOGIN */
+export const REGISTER_PAGE_UNLOADED = 'REGISTER_PAGE_UNLOADED';
+export const UPDATE_FIELD_AUTH = 'UPDATE_FIELD_AUTH';
+export const SETTINGS_SAVED = 'SETTINGS_SAVED';

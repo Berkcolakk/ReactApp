@@ -10,10 +10,10 @@ import AppRouter from './routers/AppRouter';
 const mapStateToProps = state => {
   console.log(state);
   return {
-    appLoaded: state.login.appLoaded,
-    appName: state.login.appName,
-    currentUser: state.login.currentUser,
-    redirectTo: state.login.redirectTo
+    appLoaded: state.common.appLoaded,
+    appName: state.common.appName,
+    currentUser: state.common.currentUser,
+    redirectTo: state.common.redirectTo
   }
 };
 

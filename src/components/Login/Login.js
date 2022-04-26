@@ -12,8 +12,7 @@ const mapDispatchToProps = dispatch => ({
     onChangePassword: value =>
         dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
     onSubmit: (email, password) =>
-        console.log("EMAIL" + email + "ŞİFRE:" + password),
-    // dispatch({ type: USER_LOGIN, payload: requestConfiguration.Authentication.login(email, password) }),
+        dispatch({ type: LOGIN, payload: { user: { email, password }} }),
     onUnload: () =>
         dispatch({ type: LOGIN_PAGE_UNLOADED })
 });
@@ -24,7 +23,6 @@ class Login extends Component {
     changeEmail = ev => this.props.onChangeEmail(ev.target.value);
     changePassword = ev => this.props.onChangePassword(ev.target.value);
     loginBtnOnclick = (e) => {
-        debugger;
         e.preventDefault();
         this.props.onSubmit(this.props.email, this.props.password);
     }

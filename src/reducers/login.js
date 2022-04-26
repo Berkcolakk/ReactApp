@@ -11,7 +11,6 @@ export default (state = {}, action) => {
             };
         case LOGOUT:
         case UPDATE_FIELD_AUTH:
-            debugger;
             return { ...state, [action.key]: action.value };
         default:
             return state;

@@ -9,7 +9,7 @@ class AppRouter extends Component {
     render() {
         return (
             <Router>
-                <Navbar currentUser={this.props.currentUser} />
+                <Navbar appName={this.props.appName} currentUser={this.props.currentUser} />
                 <Routes>
                     <Route exact path='/' currentUser={this.props.currentUser} element={<Home />}></Route>
                     <Route exact path='/login' currentUser={this.props.currentUser} element={<Login />}></Route>

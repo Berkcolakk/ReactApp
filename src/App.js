@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { APP_LOAD, REDIRECT } from './constants/ActionTypes';
+import { store } from './store/Store';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import RequestConfiguration from './RequestConfiguration';
+import AppRouter from './routers/AppRouter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const mapStateToProps = state => {
+  return {
+    appLoaded: state.login.appLoaded,
+    appName: state.login.appName,
+    currentUser: state.login.currentUser,
+    redirectTo: state.login.redirectTo
+  }
+};
+
+const mapDispatchToProps = dispatch => ({
+  onLoad: (payload, token) =>
+    dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
+  onRedirect: () =>
+    dispatch({ type: REDIRECT })
+});
+
+class App extends Component {
+  componentDidUpdate(nextProps) {
+    if (nextProps.redirectTo) {
+      this.context.router.replace(nextProps.redirectTo);
+      store.dispatch(push(nextProps.redirectTo));
+      this.props.onRedirect();
+    }
+  }
+  componentDidMount() {
+    const token = window.localStorage.getItem('jwt');
+    if (token) {
+      RequestConfiguration.setToken(token);
+    }
+
+    this.props.onLoad(token ? RequestConfiguration.Authentication.current() : null, token);
+  }
+  render() {
+    return (
+        <AppRouter />
+    );
+  }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
